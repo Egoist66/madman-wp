@@ -1,0 +1,19 @@
+{
+    "name": "razor/madman",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+            
+        }
+    },
+    "authors": [
+        {
+            "name": "Farid Mahmudov",
+            "email": "Razormad666@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "guzzlehttp/guzzle": "^7.8"
+    }
+}

@@ -1,0 +1,25 @@
+<?php
+namespace App\Functions;
+use WP_Http;
+
+$http = new WP_Http();
+$data = $http->request('https://jsonplaceholder.typicode.com/posts', [
+    'headers' => [
+        'Accept' => 'application/json'
+    ],
+    'method' => 'GET',
+]);
+
+$filePath = get_template_directory() . '/posts.json';
+
+if(file_get_contents($filePath) !== '') {
+    
+    return;
+}
+
+$descriptor = fopen($filePath, 'w+');
+fwrite($descriptor, json_encode($data));
+fclose($descriptor);
+
+// Установка прав доступа на файл (только для чтения)
+chmod($filePath, 0444);
