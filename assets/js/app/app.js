@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     SetupThemeOptions.init(
 
-        linksBlank({nav: '.header-nav a'}),
+        linksBlank({nav: ''}),
         linksBlank({nav: '.footer-nav a'}),
     )
     .then(() => console.log(document.readyState))

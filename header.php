@@ -39,4 +39,32 @@
 <?php wp_body_open(); ?>
 
 
+<?php
 
+// $name = 'Farid aka<br> "Developer"';
+
+// echo "<br>";
+
+// echo esc_attr($name);
+// echo "<br>";
+
+// echo esc_html("<script>alert(1)</script>");
+
+// echo "<br>";
+
+// wp_kses(
+// 	"<script>alert(1)</script><b>hello<b>", 
+// 	[
+
+// 	 'b' => []
+
+// 	]
+// );
+
+//echo wp_kses_post("<script>alert(2)</script><b>hello<b>");
+
+?>
+<br>
+<br>
+<a href="<?= esc_url("https://google.com") ?>">Google</a>
+<input type="text" name="author" value="<?= esc_attr($name); ?>">
