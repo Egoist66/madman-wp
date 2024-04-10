@@ -5,6 +5,7 @@ $modules = [
     "/app/Config/wp-theme-config.php",
     "/app/Functions/es-module.php",
     "/app/Functions/setup.php",
+    "/app/Functions/wp-posts.php",
 ];
 
 foreach ($modules as $module) {

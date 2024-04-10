@@ -1,2 +1,33 @@
 @import url('./default.css');
 
+header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    padding: 15px;
+}
+
+.search-wrapper {
+    text-align: end;
+}
+
+main {
+    padding: 15px;
+}
+
+.post-card {
+    padding: 10px;
+    background-color: ghostwhite;
+    border: 1px solid lightgray;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+img {
+    max-width: 100%;
+}
+
+.post-image {
+    display: block;
+    width: 300px;
+}

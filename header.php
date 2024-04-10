@@ -64,7 +64,4 @@
 //echo wp_kses_post("<script>alert(2)</script><b>hello<b>");
 
 ?>
-<br>
-<br>
-<a href="<?= esc_url("https://google.com") ?>">Google</a>
-<input type="text" name="author" value="<?= esc_attr($name); ?>">
+
