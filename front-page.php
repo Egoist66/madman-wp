@@ -18,7 +18,7 @@ get_header();
            
             WP_Posts::getByQuery([
                 'args' => [
-                    'post_type' => 'post', // Тип записи - посты
+                    'post_type' => ['post', 'car'], // Тип записи - посты
                     'posts_per_page' => -1, // Все посты
                     'post_status' => 'publish'
                 ],

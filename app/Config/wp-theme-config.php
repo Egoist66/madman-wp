@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Config;
+
 use App\Functions\ES_Module;
 
 /**
@@ -36,6 +37,11 @@ class WP_MadMan_Theme_Config
          * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
          */
         add_theme_support('post-thumbnails');
+        add_theme_support(
+            'post-formats', 
+            ['aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio']
+        );
+        add_post_type_support('car', 'post-formats');
 
         // This theme uses wp_nav_menu() in one location.
 
@@ -139,7 +145,7 @@ class WP_MadMan_Theme_Config
     final public static function wp_maintenance_mode(): void
     {
         if (!current_user_can('edit_themes') || !is_user_logged_in()) {
-            wp_die('<h1>Сайт находится на техническом обслуживании</h1><br />Приносим извинения за временные неудобства. Мы скоро вернемся!');
+            wp_die('<h1 style="text-align: center;">Сайт находится на техническом обслуживании 🖥️</h1><p style="text-align: center;">Приносим извинения за временные неудобства. Мы скоро вернемся!</p>');
         }
     }
 
@@ -205,6 +211,84 @@ class WP_MadMan_Theme_Config
     }
 
     /**
+     * wp_register_theme_post_type
+     *
+     * Registers theme post type
+     * @return void
+     */
+    final public static function wp_register_theme_post_type(): void
+    {
+
+        register_post_type('car', [
+            'label' => esc_html__('Cars', 'madman'),
+            'labels' => [
+                'name' => esc_html__('Cars', 'madman'),
+                'singular_name' => esc_html__('Car', 'madman'),
+                'menu_name' => 'Cars',
+                'all_items' => 'All Cars',
+                'add_new' => 'Add car',
+                'add_new_item' => 'Add new car',
+                'edit_item' => 'Edit cars',
+                'new_item' => 'New car',
+                'view_item' => 'View cars',
+                'items_list' => 'Cars list',
+                'items_list_navigation' => 'Cars list navigation',
+                'search_items' => 'Search cars',
+                'not_found' => 'No cars found',
+                'not_found_in_trash' => 'No cars found in trash',
+                'parent_item_colon' => 'Parent car:',
+                'featured_image' => 'Car image',
+                'set_featured_image' => 'Set car image',
+                'remove_featured_image' => 'Remove car image',
+                'use_featured_image' => 'Use as car image',
+                'archives' => 'Car archives',
+                'insert_into_item' => 'Insert into car',
+                'uploaded_to_this_item' => 'Uploaded to this car',
+            ],
+            'supports' => [
+                'title',
+                'editor',
+                'author',
+                'thumbnail',
+                'revisions',
+                'custom-fields',
+                'comments',
+                'trackbacks',
+                'hierarchical',
+                'page-attributes',
+                'post-formats',
+                'excerpt',
+            ],
+            'public' => true,
+            'description' => 'Car post type',
+            'has_archive' => true,
+            'menu_icon' => 'dashicons-car',
+            'show_in_rest' => true,
+            'exclude_from_search' => false,
+            'show_in_nav_menus' => true,
+            'show_in_admin_bar' => true,
+            'show_in_menu' => true,
+            'taxonomies' => ['category'],
+            'show_ui' => true,
+            'rewrite' => [
+                'slug' => 'cars',
+            ],
+            'publicly_queryable' => true,
+
+
+
+        ]);
+
+
+    }
+
+    final public static function wp_flash_rewrite_rules(): void 
+    {
+        self::wp_register_theme_post_type();
+        flush_rewrite_rules();
+    }
+ 
+    /**
      * wp_setup_init
      *
      * Set up theme defaults and registers support for various WordPress features.
@@ -213,19 +297,21 @@ class WP_MadMan_Theme_Config
     final public static function wp_setup_init(?array $options = []): void
     {
         /* Hooks registrations  */
+        add_action('init', [self::class, 'wp_register_theme_post_type'], 0);
 
 
-        add_action('after_setup_theme', [self::class, 'wp_setup_theme'], 0);
-        add_action('after_setup_theme', [self::class, 'wp_content_width'], 0);
+
+        add_action('after_switch_theme', [self::class, 'wp_flash_rewrite_rules'], 10);
+        add_action('after_setup_theme', [self::class, 'wp_setup_theme'], 10);
+        add_action('after_setup_theme', [self::class, 'wp_content_width'], 10);
         add_action('widgets_init', [self::class, 'wp_widgets_add']);
         add_action('wp_enqueue_scripts', [self::class, 'wp_equeue_theme_scripts']);
         add_action('wp_footer', static fn() => ES_Module::add('app->app', 'app-script'), 20);
-
         add_action('wp_head', [self::class, 'wp_generate_theme_meta']);
 
 
         if (isset($options['maintenance_mode']) && $options['maintenance_mode'] === true) {
-            add_action('wp_enqueue_scripts', [self::class, 'wp_maintenance_mode']);
+            add_action('wp_head', [self::class, 'wp_maintenance_mode']);
 
         }
 

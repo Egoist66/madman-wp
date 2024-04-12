@@ -3,7 +3,7 @@
 namespace App\Functions;
 
 use App\Config\WP_MadMan_Theme_Config;
-
+use App\Functions\WP_ShortCodes;
 
 
 
@@ -53,6 +53,8 @@ class WP_Setup
 
 
 		self::addons();
+
+		WP_ShortCodes::exec('foobar');
 	}
 	
 	/**

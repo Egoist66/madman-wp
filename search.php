@@ -43,7 +43,7 @@ get_header();
 
 		else:
 
-			get_template_part('template-parts/content', 'none');
+			"No results found";
 
 		endif;
 		?>

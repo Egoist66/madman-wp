@@ -3,7 +3,6 @@
 namespace App\Functions;
 
 use RuntimeException;
-use WP_Error;
 use WP_Query;
 
 class WP_Posts
@@ -28,6 +27,7 @@ class WP_Posts
             if ($query->have_posts()) {
                 while ($query->have_posts()) {
                     $query->the_post();
+
                     $data = self::options();
 
 
@@ -51,7 +51,6 @@ class WP_Posts
         } catch (RuntimeException $e) {
             echo $e->getMessage();
         }
-
 
         wp_reset_postdata();
 
