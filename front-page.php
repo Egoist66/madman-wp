@@ -11,14 +11,14 @@ get_header();
     <h1>Home</h1>
 
 
-    <h2 style="text-align: center;">Recent posts</h2>
+    <h2  style="text-align: center;">Recent posts</h2>
     <div>
 
         <?php
            
             WP_Posts::getByQuery([
                 'args' => [
-                    'post_type' => ['post', 'car'], // Тип записи - посты
+                    'post_type' => ['post'], // Тип записи - посты
                     'posts_per_page' => -1, // Все посты
                     'post_status' => 'publish'
                 ],
@@ -34,3 +34,4 @@ get_header();
 
 
 <?php get_footer(); ?>
+<?php get_sidebar() ?>

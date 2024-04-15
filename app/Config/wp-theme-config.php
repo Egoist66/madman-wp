@@ -38,7 +38,7 @@ class WP_MadMan_Theme_Config
          */
         add_theme_support('post-thumbnails');
         add_theme_support(
-            'post-formats', 
+            'post-formats',
             ['aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio']
         );
         add_post_type_support('car', 'post-formats');
@@ -219,75 +219,117 @@ class WP_MadMan_Theme_Config
     final public static function wp_register_theme_post_type(): void
     {
 
-        register_post_type('car', [
-            'label' => esc_html__('Cars', 'madman'),
-            'labels' => [
-                'name' => esc_html__('Cars', 'madman'),
-                'singular_name' => esc_html__('Car', 'madman'),
-                'menu_name' => 'Cars',
-                'all_items' => 'All Cars',
-                'add_new' => 'Add car',
-                'add_new_item' => 'Add new car',
-                'edit_item' => 'Edit cars',
-                'new_item' => 'New car',
-                'view_item' => 'View cars',
-                'items_list' => 'Cars list',
-                'items_list_navigation' => 'Cars list navigation',
-                'search_items' => 'Search cars',
-                'not_found' => 'No cars found',
-                'not_found_in_trash' => 'No cars found in trash',
-                'parent_item_colon' => 'Parent car:',
-                'featured_image' => 'Car image',
-                'set_featured_image' => 'Set car image',
-                'remove_featured_image' => 'Remove car image',
-                'use_featured_image' => 'Use as car image',
-                'archives' => 'Car archives',
-                'insert_into_item' => 'Insert into car',
-                'uploaded_to_this_item' => 'Uploaded to this car',
-            ],
-            'supports' => [
-                'title',
-                'editor',
-                'author',
-                'thumbnail',
-                'revisions',
-                'custom-fields',
-                'comments',
-                'trackbacks',
-                'hierarchical',
-                'page-attributes',
-                'post-formats',
-                'excerpt',
-            ],
-            'public' => true,
-            'description' => 'Car post type',
-            'has_archive' => true,
-            'menu_icon' => 'dashicons-car',
-            'show_in_rest' => true,
-            'exclude_from_search' => false,
-            'show_in_nav_menus' => true,
-            'show_in_admin_bar' => true,
-            'show_in_menu' => true,
-            'taxonomies' => ['category'],
-            'show_ui' => true,
-            'rewrite' => [
-                'slug' => 'cars',
-            ],
-            'publicly_queryable' => true,
+        if(!post_type_exists('car')){
+            register_post_type('car', [
+                'label' => esc_html__('Cars', 'madman'),
+                'labels' => [
+                    'name' => esc_html__('Cars', 'madman'),
+                    'singular_name' => esc_html__('Car', 'madman'),
+                    'menu_name' => 'Cars',
+                    'all_items' => 'All Cars',
+                    'add_new' => 'Add car',
+                    'add_new_item' => 'Add new car',
+                    'edit_item' => 'Edit cars',
+                    'new_item' => 'New car',
+                    'view_item' => 'View cars',
+                    'items_list' => 'Cars list',
+                    'items_list_navigation' => 'Cars list navigation',
+                    'search_items' => 'Search cars',
+                    'not_found' => 'No cars found',
+                    'not_found_in_trash' => 'No cars found in trash',
+                    'parent_item_colon' => 'Parent car:',
+                    'featured_image' => 'Car image',
+                    'set_featured_image' => 'Set car image',
+                    'remove_featured_image' => 'Remove car image',
+                    'use_featured_image' => 'Use as car image',
+                    'archives' => 'Car archives',
+                    'insert_into_item' => 'Insert into car',
+                    'uploaded_to_this_item' => 'Uploaded to this car',
+                ],
+                'supports' => [
+                    'title',
+                    'editor',
+                    'author',
+                    'thumbnail',
+                    'revisions',
+                    'custom-fields',
+                    'comments',
+                    'trackbacks',
+                    'hierarchical',
+                    'page-attributes',
+                    'post-formats',
+                    'excerpt',
+                ],
+                'public' => true,
+                'description' => 'Car post type',
+                'menu_icon' => 'dashicons-car',
+                'show_in_rest' => true,
+                'exclude_from_search' => false,
+                'show_in_nav_menus' => true,
+                'show_in_admin_bar' => true,
+                'show_in_menu' => true,
+                'show_ui' => true,
+                'rewrite' => [
+                    'slug' => 'cars',
+                ],
+                'taxonomies' => ['category'],
+                'has_archive' => true,
+                
+                'publicly_queryable' => true,
+    
+    
+    
+            ]);
+        }
 
-
-
-        ]);
 
 
     }
 
-    final public static function wp_flash_rewrite_rules(): void 
+    final public static function wp_unregister_theme_post_type(): void {
+        unregister_post_type('car');
+    }
+
+    final public static function wp_register_theme_taxonomy(): void
+    {
+        $args = [
+            'hierarchical' => false,
+            'labels' => [
+                'name' => esc_html__('Brands', 'madman'),
+                'singular_name' => esc_html__('Brand', 'madman'),
+                'search_items' => esc_html__('Search brands', 'madman'),
+                'all_items' => esc_html__('All brands', 'madman'),
+                'parent_item' => esc_html__('Parent brand', 'madman'),
+                'parent_item_colon' => esc_html__('Parent brand:', 'madman'),
+                'edit_item' => esc_html__('Edit brand', 'madman'),
+                'update_item' => esc_html__('Update brand', 'madman'),
+                'add_new_item' => esc_html__('Add new brand', 'madman'),
+                'new_item_name' => esc_html__('New brand name', 'madman'),
+                'menu_name' => esc_html__('Brands', 'madman'),
+            
+            ],
+
+            'show_ui' => true,
+            'show_in_menu' => true,
+            'show_in_nav_menus' => true,
+            'show_admin_column' => true,
+            'rewrite' => ['slug' => 'brands'],
+            'query_var' => true,
+            'show_in_rest' => true,
+
+        ];
+
+        if(!taxonomy_exists('brand')){
+            register_taxonomy('brand', ['car'], $args);
+        }
+
+    } 
+    final public static function wp_flash_rewrite_rules(): void
     {
         self::wp_register_theme_post_type();
         flush_rewrite_rules();
     }
- 
+
     /**
      * wp_setup_init
      *
@@ -297,7 +339,9 @@ class WP_MadMan_Theme_Config
     final public static function wp_setup_init(?array $options = []): void
     {
         /* Hooks registrations  */
+        add_action('init', [self::class, 'wp_register_theme_taxonomy'], 0);
         add_action('init', [self::class, 'wp_register_theme_post_type'], 0);
+        // add_action('init', [self::class, 'wp_unregister_theme_post_type'], 0);
 
 
 

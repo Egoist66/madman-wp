@@ -63,5 +63,14 @@
 
 //echo wp_kses_post("<script>alert(2)</script><b>hello<b>");
 
+
+
+//taxonomy exists()
+
+if(is_tax()){
+
+	echo "You are on taxonomy page";
+}
+
 ?>
 

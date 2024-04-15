@@ -14,10 +14,22 @@ class WP_ShortCodes
      * @param  mixed $shortcode
      * @return void
      */
-    final public static function exec(string $name)
+    final public static function init()
     {
-        add_shortcode($name, self::select()['foobar']);
+       
+        add_shortcode('foobar', self::select()['foobar']);
 
+    }
+
+    final public static function exec(string $shortcode){
+
+        foreach(self::select() as $key => $value){
+            
+            if(shortcode_exists($key)){
+                echo do_shortcode($shortcode);
+            }
+        }
+        
     }
 
     
@@ -50,3 +62,4 @@ class WP_ShortCodes
         remove_shortcode($name);
     }
 }
+

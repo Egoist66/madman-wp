@@ -53,8 +53,8 @@ class WP_Setup
 
 
 		self::addons();
+		WP_ShortCodes::init();
 
-		WP_ShortCodes::exec('foobar');
 	}
 	
 	/**

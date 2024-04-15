@@ -31,3 +31,8 @@ img {
     display: block;
     width: 300px;
 }
+
+aside {
+    background-color: ghostwhite;
+    padding: 10px;
+}

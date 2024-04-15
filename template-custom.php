@@ -1,6 +1,6 @@
 <?php
 
-use App\Functions\WP_Posts;
+use App\Functions\WP_ShortCodes;
 
 /*
     Template name: Template Home
@@ -18,6 +18,10 @@ get_header();
 
 
     <div>
+
+        <?php if(get_the_ID()) : ?>
+            <h2><?= get_term_link(20, 'brand') ?></h2>
+        <?php endif; ?>
         
         <h2><?= get_the_title() ?></h2>
         <div>
@@ -28,7 +32,7 @@ get_header();
         <?php echo get_post_format(); ?>
 
         <?php 
-            echo do_shortcode('[foobar name="Farid" age="25"]');
+            WP_ShortCodes::exec('[foobar name="Farid" age="25"]');
         
         ?>
 
