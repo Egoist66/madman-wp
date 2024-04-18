@@ -3,13 +3,14 @@
 namespace App\Config;
 
 use App\Functions\ES_Module;
+use App\Widgets\AboutWidget;
 
 /**
  * WP_MadMan_Theme_Config
  * 
  * Theme config
  */
-class WP_MadMan_Theme_Config
+class WP_Theme_Config
 {
     /**
      * wp_setup_theme
@@ -135,6 +136,20 @@ class WP_MadMan_Theme_Config
                 'after_title' => '</h2>',
             )
         );
+
+        register_sidebar(
+            array(
+                'name' => esc_html__('Sidebar for Cars', 'madman'),
+                'id' => 'cars-sidebar',
+                'description' => esc_html__('Add widgets here.', 'madman'),
+                'before_widget' => '<section id="%1$s" class="widget %2$s">',
+                'after_widget' => '</section>',
+                'before_title' => '<h2 class="widget-title">',
+                'after_title' => '</h2>',
+            )
+        );
+
+        register_widget(AboutWidget::class);
     }
 
     /**
@@ -219,7 +234,7 @@ class WP_MadMan_Theme_Config
     final public static function wp_register_theme_post_type(): void
     {
 
-        if(!post_type_exists('car')){
+        if (!post_type_exists('car')) {
             register_post_type('car', [
                 'label' => esc_html__('Cars', 'madman'),
                 'labels' => [
@@ -274,11 +289,11 @@ class WP_MadMan_Theme_Config
                 ],
                 'taxonomies' => ['category'],
                 'has_archive' => true,
-                
+
                 'publicly_queryable' => true,
-    
-    
-    
+
+
+
             ]);
         }
 
@@ -286,7 +301,8 @@ class WP_MadMan_Theme_Config
 
     }
 
-    final public static function wp_unregister_theme_post_type(): void {
+    final public static function wp_unregister_theme_post_type(): void
+    {
         unregister_post_type('car');
     }
 
@@ -306,7 +322,7 @@ class WP_MadMan_Theme_Config
                 'add_new_item' => esc_html__('Add new brand', 'madman'),
                 'new_item_name' => esc_html__('New brand name', 'madman'),
                 'menu_name' => esc_html__('Brands', 'madman'),
-            
+
             ],
 
             'show_ui' => true,
@@ -319,15 +335,26 @@ class WP_MadMan_Theme_Config
 
         ];
 
-        if(!taxonomy_exists('brand')){
+        if (!taxonomy_exists('brand')) {
             register_taxonomy('brand', ['car'], $args);
         }
 
-    } 
+    }
     final public static function wp_flash_rewrite_rules(): void
     {
         self::wp_register_theme_post_type();
         flush_rewrite_rules();
+    }
+
+    final public static function wp_sanitize_comments($comment_content)
+    {
+        // Функция для очистки содержимого комментариев от скриптов
+        
+        $allowed_tags = '<a><strong><em>'; // Разрешенные теги
+        $comment_content = wp_kses($comment_content, $allowed_tags);
+        return $comment_content;
+        
+
     }
 
     /**
@@ -363,6 +390,7 @@ class WP_MadMan_Theme_Config
         /* Filters registrations  */
 
         add_filter('body_class', [self::class, 'wp_theme_body_class']);
+        add_filter('comment_text', [self::class, 'wp_sanitize_comments'], 10, 1);
 
 
     }

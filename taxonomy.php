@@ -24,7 +24,7 @@ use App\Functions\WP_Posts;
 ?>
 
 <main class="taxonomy-page">
- 
+    
     <?php 
     
     

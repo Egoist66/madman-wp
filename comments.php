@@ -42,6 +42,7 @@ if ( post_password_required() ) {
 					number_format_i18n( $madman_comment_count ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);
+				
 			}
 			?>
 		</h2><!-- .comments-title -->
@@ -54,6 +55,7 @@ if ( post_password_required() ) {
 				array(
 					'style'      => 'ol',
 					'short_ping' => true,
+					
 				)
 			);
 			?>

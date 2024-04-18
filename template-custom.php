@@ -3,7 +3,7 @@
 use App\Functions\WP_ShortCodes;
 
 /*
-    Template name: Template Home
+    Template name: Template Custom
     Template Post Type: page, post, car
 
 */

@@ -8,7 +8,27 @@
 
 */
 
+echo "Сегодня " . date("Y/m/d") . "<br>";
+$myfile = fopen(__DIR__ . '/notes.txt', "r") or die("Не удается открыть файл!");
+echo fread($myfile, filesize(__DIR__ . '/notes.txt'));
+
+fclose($myfile);
+
+echo ceil(disk_free_space(dirname(__DIR__)) / 1024 / 1024 / 1024) . " ГБ свободного места";
+
+$name = "<h2>My name is farid</h2>";
+//filter_input(INPUT_GET, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+echo filter_var($name, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+
+
 if($_SERVER['REQUEST_METHOD'] === 'GET'){
+
+    // if($_GET['drop'] === 'true'){
+    //     trigger_error('Error', E_USER_ERROR);
+    // };
+
+
     $action = $_GET['action'] ?? '';
     $file = $_GET['file'] ?? '';
     $drop = $_GET['drop'] ?? '';

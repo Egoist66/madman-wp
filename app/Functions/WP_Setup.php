@@ -2,7 +2,7 @@
 
 namespace App\Functions;
 
-use App\Config\WP_MadMan_Theme_Config;
+use App\Config\WP_Theme_Config;
 use App\Functions\WP_ShortCodes;
 
 
@@ -47,7 +47,7 @@ class WP_Setup
 	 */
 	final public static function init(bool $isDev = false)
 	{
-		WP_MadMan_Theme_Config::wp_setup_init([
+		WP_Theme_Config::wp_setup_init([
 			'maintenance_mode' => $isDev
 		]);
 

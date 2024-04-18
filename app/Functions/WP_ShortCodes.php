@@ -16,6 +16,7 @@ class WP_ShortCodes
      */
     final public static function init()
     {
+        // register shortcodes
        
         add_shortcode('foobar', self::select()['foobar']);
 
