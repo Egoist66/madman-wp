@@ -20,7 +20,9 @@ $name = "<h2>My name is farid</h2>";
 //filter_input(INPUT_GET, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 echo filter_var($name, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
+highlight_string('<?php echo "Hello"; ?>');
 
+//highlight_file(__FILE__);
 
 if($_SERVER['REQUEST_METHOD'] === 'GET'){
 
