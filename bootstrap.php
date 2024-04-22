@@ -11,4 +11,4 @@ foreach ($modules as $module) {
 }
 
 
-WP_Setup::init();
+WP_Setup::init(false);

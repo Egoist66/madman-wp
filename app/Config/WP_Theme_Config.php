@@ -161,6 +161,7 @@ class WP_Theme_Config
     {
         if (!current_user_can('edit_themes') || !is_user_logged_in()) {
             wp_die('<h1 style="text-align: center;">Сайт находится на техническом обслуживании 🖥️</h1><p style="text-align: center;">Приносим извинения за временные неудобства. Мы скоро вернемся!</p>');
+            
         }
     }
 
@@ -212,9 +213,8 @@ class WP_Theme_Config
      * @param  mixed $classes
      * @return array
      */
-    final public static function wp_theme_body_class($classes): array
+    final public static function wp_theme_body_class(array $classes): array
     {
-
         if (is_front_page()) {
             $classes[] = 'main-page';
         } else if (is_singular()) {
@@ -223,6 +223,10 @@ class WP_Theme_Config
 
 
         return $classes;
+    }
+
+    final public static function wp_admin_enqueue_scripts() {
+        wp_enqueue_style( 'custom-admin-styles', get_template_directory_uri() . '/assets/admin/admin.css' );
     }
 
     /**
@@ -345,8 +349,16 @@ class WP_Theme_Config
         self::wp_register_theme_post_type();
         flush_rewrite_rules();
     }
-
-    final public static function wp_sanitize_comments($comment_content)
+    
+    /**
+     * wp_sanitize_comments
+     *
+     * 
+     * Sanitizes comment data.
+     * @param  mixed $comment_content
+     * @return string
+     */
+    final public static function wp_sanitize_comments($comment_content): string
     {
         // Функция для очистки содержимого комментариев от скриптов
         
@@ -379,6 +391,7 @@ class WP_Theme_Config
         add_action('wp_enqueue_scripts', [self::class, 'wp_equeue_theme_scripts']);
         add_action('wp_footer', static fn() => ES_Module::add('app->app', 'app-script'), 20);
         add_action('wp_head', [self::class, 'wp_generate_theme_meta']);
+        add_action('admin_enqueue_scripts', [self::class, 'wp_admin_enqueue_scripts']);
 
 
         if (isset($options['maintenance_mode']) && $options['maintenance_mode'] === true) {

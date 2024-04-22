@@ -2,6 +2,7 @@
 namespace App\Widgets;
 
 use WP_Widget;
+use App\Functions\WP_Posts;
 
 class AboutWidget extends WP_Widget
 {
@@ -27,13 +28,26 @@ class AboutWidget extends WP_Widget
 
         echo $before_widget;
 
-        if ($title) {
-            echo $before_title . esc_html($title) . $after_title;
-        }
+            if ($title) {
+                echo $before_title . esc_html($title) . $after_title;
+            }
 
-        if ($text) {
-            echo wp_kses_post($text);
-        }
+            if ($text) {
+                echo wp_kses_post($text);
+            }
+            
+           
+            WP_Posts::getByQuery([
+                'args' => [
+                    'post_type' => ['car'], // Тип записи - посты
+                    'posts_per_page' => -1, // Все посты
+                    'post_status' => 'publish'
+                ],
+                'template' => 'templates/template-post',
+
+            ]);
+
+    
         echo $after_widget;
     }
 

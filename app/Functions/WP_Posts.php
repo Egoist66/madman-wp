@@ -43,6 +43,7 @@ class WP_Posts
 
                     echo ob_get_clean();
 
+                    wp_reset_postdata();
                 }
             } else {
                 echo '<div class="no-posts">Посты не найдены.</div>';
@@ -50,9 +51,11 @@ class WP_Posts
 
         } catch (RuntimeException $e) {
             echo $e->getMessage();
+
+            wp_reset_postdata();
         }
 
-        wp_reset_postdata();
+       
 
     }
 

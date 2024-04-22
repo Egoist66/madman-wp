@@ -31,10 +31,13 @@ get_header();
 
         <?php echo get_post_format(); ?>
 
+        <p>Shortcode:</p>
         <?php 
             WP_ShortCodes::exec('[foobar name="Farid" age="25"]');
         
         ?>
+
+        
 
 
     </div>

@@ -78,3 +78,4 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
 
 
 <?php get_footer(); ?>
+<?php get_sidebar('cars') ?>

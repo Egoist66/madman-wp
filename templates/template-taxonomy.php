@@ -1,5 +1,5 @@
 <div class="posts-wrapper">
-    <h1><?= get_queried_object()->name ?>s</h1>
+    <h1><?= get_queried_object()->name ?></h1>
     <article class="post">
         <h2><a href="<?= the_permalink() ?>"><?= the_title() ?></a></h2>
         <?= term_description() ?>

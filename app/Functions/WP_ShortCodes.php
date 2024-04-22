@@ -2,6 +2,11 @@
 
 namespace App\Functions;
 
+/**
+ * WP_ShortCodes
+ * 
+ * Helper class for WP shortcodes
+ */
 class WP_ShortCodes
 {
 
@@ -9,7 +14,6 @@ class WP_ShortCodes
     /**
      * wp_shortcodes
      * 
-     * Helper function for WP shortcodes
      * 
      * @param  mixed $shortcode
      * @return void
@@ -18,7 +22,13 @@ class WP_ShortCodes
     {
         // register shortcodes
        
-        add_shortcode('foobar', self::select()['foobar']);
+        foreach(self::select() as $key => $value){
+            
+            if(!shortcode_exists($key)){
+                add_shortcode($key, $value);
+            }
+            
+        }
 
     }
 
@@ -28,6 +38,7 @@ class WP_ShortCodes
             
             if(shortcode_exists($key)){
                 echo do_shortcode($shortcode);
+                break;
             }
         }
         
@@ -53,6 +64,10 @@ class WP_ShortCodes
                 ], $atts);
 
                 return "Меня зовут {$atts['name']} мне {$atts['age']} лет";
+            },
+            "greet" => function ($atts): string {
+
+                return "Hello";
             }
         ];
 

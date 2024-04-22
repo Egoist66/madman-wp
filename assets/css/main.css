@@ -36,3 +36,9 @@ aside {
     background-color: ghostwhite;
     padding: 10px;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
