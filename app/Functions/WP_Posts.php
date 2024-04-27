@@ -18,7 +18,7 @@ class WP_Posts
      * @param  mixed $render
      * @return void
      */
-    public static function getByQuery(array $params)
+    public static function getByQuery(array $params): WP_Query | null
     {
         try {
             $query = new WP_Query($params['args']);
@@ -55,7 +55,7 @@ class WP_Posts
             wp_reset_postdata();
         }
 
-       
+       return $query;
 
     }
 

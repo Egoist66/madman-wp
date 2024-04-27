@@ -51,7 +51,7 @@ get_header();
 
         <?php
         // paginate_links();
-        //posts_nav_link('&laquo;', 'Previous Page', 'Next Page');
+        // posts_nav_link('&laquo;', 'Previous Page', 'Next Page');
     endif; ?>
 
 

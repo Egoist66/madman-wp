@@ -22,13 +22,22 @@ get_header();
 		</div><!-- .page-header -->
 
 		<?php
+			$paged = get_query_var('paged') ? : get_query_var('paged') ? : 1;
+			$query = WP_Posts::getByQuery([
+				'args' => [
+					'posts_per_page' => 2,
+					'post_type' => 'car',
+					'paged' => $paged
 
-			WP_Posts::get([
-				'showIfIsHomeOrNotFront' => static fn() => (
-					""
-				),	
+				],
 				'template' => 'templates/template-post',
 
+			]);
+
+			the_posts_pagination([
+				'prev_text' => 'Previous Page',
+				'next_text' => 'Next Page',
+				'mid_size'  => 2,
 			])
 		?>
 

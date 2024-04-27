@@ -13,14 +13,14 @@ get_header();
 
 ?>
 
-<main class="<?= implode(' ', get_post_class()); ?>">
+<main class="<?= implode(' ', get_post_class('custom-page')); ?>">
     <h1><?= ucfirst(get_post_type()) ?></h1>
 
 
     <div>
 
         <?php if(get_the_ID()) : ?>
-            <h2><?= get_term_link(20, 'brand') ?></h2>
+            <h2><?= get_term_link(16, 'brand') ?></h2>
         <?php endif; ?>
         
         <h2><?= get_the_title() ?></h2>
