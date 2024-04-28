@@ -38,6 +38,7 @@ get_header();
 
                 <?php
                 
+                
                   the_posts_pagination([
                     'mid_size'  => 2,
                     'prev_text' => 'Previous Page',
