@@ -3,6 +3,7 @@ use App\Functions\WP_Setup;
 
 $modules = [
     "/vendor/autoload.php",
+    '/utils/view.php',
    
 ];
 

@@ -1,5 +1,7 @@
 <article id="post-<?= the_ID() ?>" <?php post_class('post-card') ?>>
-    <img class="post-image" src="<?= the_post_thumbnail_url() ?>" alt="">
+    <?php if (has_post_thumbnail(get_the_ID())): ?>
+        <?= the_post_thumbnail('car-cover') ?>
+    <?php endif; ?>    
     <h2><?= the_title() ?></h2>
     <p><?= the_excerpt() ?></p>
     <p><a href="<?= the_permalink() ?>">Read more</a></p>

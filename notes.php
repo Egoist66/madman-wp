@@ -42,7 +42,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
     if($action === 'view'){
         $copy = copy(__DIR__ . '/' . $file, __DIR__ . '/notes.txt');
         $content = file_get_contents(__DIR__ . '/' . '/notes.txt');
-        $data = htmlspecialchars("$content");
+        $data = htmlspecialchars($content);
         echo "<pre style='height: 30vh;'>
         
             $data
@@ -78,4 +78,4 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
 
 
 <?php get_footer(); ?>
-<?php get_sidebar('cars') ?>
+<?php get_sidebar('car') ?>
