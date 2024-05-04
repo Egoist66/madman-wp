@@ -5,6 +5,12 @@ namespace App\Functions;
 use stdClass;
 
 
+/**
+ * WP_MetaBoxes
+ * 
+ * Helper class for WP meta boxes
+ */
+
 class WP_MetaBoxes {
 
     final public static function wp_add_meta_box(): void {
