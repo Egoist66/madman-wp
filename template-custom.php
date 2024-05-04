@@ -28,6 +28,7 @@ get_header();
             <img width="300" src="<?= get_the_post_thumbnail_url() ?>" alt="">
         </div>
         <p><?= get_the_content() ?></p>
+        <h3>Car price: <span><?= get_post_meta(get_the_ID(), 'car_price', true) ?>$</span></h3>
 
         <?php echo get_post_format(); ?>
 

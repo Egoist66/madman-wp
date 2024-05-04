@@ -2,8 +2,11 @@
 use App\Functions\WP_Setup;
 
 $modules = [
-    "/vendor/autoload.php",
+    '/inc/class-tgm-plugin-activation.php',
     '/utils/view.php',
+    '/vendor/autoload.php',
+ 
+   
    
 ];
 
