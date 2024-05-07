@@ -468,9 +468,9 @@ class WP_Theme_Config
 
         // Meta boxes
 
-        add_action('add_meta_boxes', [WP_MetaBoxes::class, 'wp_add_meta_box']);
-        add_action('save_post', [WP_MetaBoxes::class, 'save_meta_box'], 10, 2);
-
+        // add_action('add_meta_boxes', [WP_MetaBoxes::class, 'wp_add_meta_box']);
+        // add_action('save_post', [WP_MetaBoxes::class, 'save_meta_box'], 10, 2);
+ 
         if (isset($options['maintenance_mode']) && $options['maintenance_mode'] === true) {
             add_action('wp_head', [self::class, 'wp_maintenance_mode']);
 
