@@ -1,5 +1,5 @@
 <?php
-namespace App\Functions;
+namespace App\Classes;
 use WP_Http;
 
 $http = new WP_Http();

@@ -7,7 +7,7 @@
  * @package madman
  */
 
- use App\Functions\WP_Posts;
+ use App\Classes\WP_Posts;
 
 get_header();
 ?>

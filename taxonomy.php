@@ -14,7 +14,7 @@ $args = array(
     ),
 );
 
-use App\Functions\WP_Posts;
+use App\Classes\WP_Posts;
 
 
 

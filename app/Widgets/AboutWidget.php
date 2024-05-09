@@ -2,7 +2,7 @@
 namespace App\Widgets;
 
 use WP_Widget;
-use App\Functions\WP_Posts;
+use App\Classes\WP_Posts;
 
 class AboutWidget extends WP_Widget
 {

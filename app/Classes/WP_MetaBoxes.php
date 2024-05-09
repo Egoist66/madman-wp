@@ -1,8 +1,7 @@
 <?php
 
 
-namespace App\Functions;
-use stdClass;
+namespace App\Classes;
 
 
 /**

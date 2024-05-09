@@ -1,5 +1,5 @@
 <?php
-use App\Functions\WP_Setup;
+use App\Classes\WP_Setup;
 
 $modules = [
     

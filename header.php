@@ -41,31 +41,9 @@
 
 <?php
 
-// $name = 'Farid aka<br> "Developer"';
-
-// echo "<br>";
-
-// echo esc_attr($name);
-// echo "<br>";
-
-// echo esc_html("<script>alert(1)</script>");
-
-// echo "<br>";
-
-// wp_kses(
-// 	"<script>alert(1)</script><b>hello<b>", 
-// 	[
-
-// 	 'b' => []
-
-// 	]
-// );
-
-//echo wp_kses_post("<script>alert(2)</script><b>hello<b>");
+global $madman_options;
 
 
-
-//taxonomy exists()
 
 if(is_tax()){
 
@@ -74,3 +52,4 @@ if(is_tax()){
 
 ?>
 
+<h3>Phone number: <?= $madman_options['phone_number'] ?></h3>

@@ -1,11 +1,37 @@
 <?php
-use App\Functions\WP_Posts;
+use App\Classes\WP_Posts;
 
 
 get_header();
 
 
 ?>
+
+// $name = 'Farid aka<br> "Developer"';
+
+// echo "<br>";
+
+// echo esc_attr($name);
+// echo "<br>";
+
+// echo esc_html("<script>alert(1)</script>");
+
+// echo "<br>";
+
+// wp_kses(
+// 	"<script>alert(1)</script><b>hello<b>", 
+// 	[
+
+// 	 'b' => []
+
+// 	]
+// );
+
+//echo wp_kses_post("<script>alert(2)</script><b>hello<b>");
+
+
+
+//taxonomy exists()
 
 <main class="<?= implode(' ', get_post_class()); ?> main-front">
     <h1>Home</h1>

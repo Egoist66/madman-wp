@@ -1,6 +1,6 @@
 <?php
 
-use App\Functions\WP_ShortCodes;
+use App\Classes\WP_ShortCodes;
 
 /*
     Template name: Template Custom
@@ -25,7 +25,7 @@ get_header();
         
         <h2><?= get_the_title() ?></h2>
         <div>
-            <img width="300" src="<?= get_the_post_thumbnail_url() ?>" alt="">
+            <?= the_post_thumbnail('car-cover') ?>
         </div>
         <p><?= get_the_content() ?></p>
 

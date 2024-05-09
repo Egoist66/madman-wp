@@ -1,5 +1,5 @@
 <?php
-use App\Functions\WP_Posts;
+use App\Classes\WP_Posts;
 
 
 get_header();
@@ -10,6 +10,9 @@ get_header();
 <main class="<?= implode(' ', get_post_class()); ?> main-front">
     <h1>Home</h1>
     
+    <button id="button_car">Get a car</button>
+
+    <div  id="car_content"></div>
 </main>
     <?php if (have_posts()):
         while (have_posts()):

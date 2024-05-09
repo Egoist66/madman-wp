@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Functions;
+namespace App\Classes;
 
 use App\Config\WP_Theme_Config;
-use App\Functions\WP_ShortCodes;
+use App\Classes\WP_ShortCodes;
 
 
 
@@ -33,14 +33,11 @@ class WP_Setup
 	 */
 
 	const ADDONS = [
-		'/inc/class-tgm-plugin-activation.php',
-		'/utils/view.php',
-		'/utils/dump.php',
-		'/inc/acf/acf.php',
-		'/inc/custom-header.php',
-		'/inc/template-tags.php',
-		'/inc/template-functions.php',
-		'/inc/customizer.php',
+		'/inc/class-tgm-plugin-activation',
+		'/utils/view',
+		'/utils/dump',
+		'/inc/ajax-handle',
+		'/inc/redux-options',
 	];
 
 	/**
@@ -71,7 +68,7 @@ class WP_Setup
 	{
 
 		foreach (self::ADDONS as $addon) {
-			require get_template_directory() . $addon;
+			require get_template_directory() . $addon . '.php';
 		}
 	}
 }
