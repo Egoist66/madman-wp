@@ -15,11 +15,15 @@
 
 */
 
+if(!function_exists('add_action')) {
+    echo "Hi there! I'm just a plugin, not much I can do when called directly.";
+}
 
  
 $modules = [
     '/inc/metaboxes/metaboxes',
     '/inc/acf/acf',
+    '/inc/guttenberg/guttenberg',
     '/inc/custom-taxonomy/brands-taxonomy',
     '/inc/custom-post-types/cars-post-type',
 ];

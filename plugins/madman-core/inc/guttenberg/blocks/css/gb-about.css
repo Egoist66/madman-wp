@@ -1,0 +1,12 @@
+.gb-about-title {
+    font-size: 30px !important;
+}
+
+.gb-about-text {
+    font-style: italic !important;
+}
+
+.wp-block-my-gb-block-custom-block-type{
+    padding: 20px;
+    background-color: cadetblue;
+}

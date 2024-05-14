@@ -1,87 +1,17 @@
 <?php
-use App\Classes\WP_Posts;
+use App\Classes\WP_Setup;
 
-
-get_header();
-
-
-?>
-
-// $name = 'Farid aka<br> "Developer"';
-
-// echo "<br>";
-
-// echo esc_attr($name);
-// echo "<br>";
-
-// echo esc_html("<script>alert(1)</script>");
-
-// echo "<br>";
-
-// wp_kses(
-// 	"<script>alert(1)</script><b>hello<b>", 
-// 	[
-
-// 	 'b' => []
-
-// 	]
-// );
-
-//echo wp_kses_post("<script>alert(2)</script><b>hello<b>");
-
-
-
-//taxonomy exists()
-
-<main class="<?= implode(' ', get_post_class()); ?> main-front">
-    <h1>Home</h1>
+$modules = [
     
-</main>
-    <?php if (have_posts()):
-        while (have_posts()):
-            the_post();
-            ?>
+    '/vendor/autoload.php',
+ 
+   
+   
+];
 
-                <div style="border: 1px solid black; padding: 10px; max-width: 300px; margin: 0 auto 20px auto">
-                    <h2><a href="<?= the_permalink() ?>"><?= the_title() ?></a></h2>
-                    <p><?= the_content(); ?></p>
-                    <span><?= get_the_date() ?></span>
-                </div>
-
-            <?php
-
-        endwhile;
-
-        ?>
-            <div class="pagination">
-                <!-- <div class="prev">
-                    <?php // previous_posts_link('&laquo; Previous Page') ?> -->
-                <!-- </div> -->
-
-                <!-- <div class="next"> -->
-                    <!-- <?php // next_posts_link('Next Page &raquo;') ?> 
-                </div> -->
-
-                <?php
-                
-                
-                  the_posts_pagination([
-                    'mid_size'  => 2,
-                    'prev_text' => 'Previous Page',
-                    'next_text' => 'Next Page',
-                    
-                  ]);
-                
-                ?>
-
-            </div>
-
-        <?php
-        // paginate_links();
-        // posts_nav_link('&laquo;', 'Previous Page', 'Next Page');
-    endif; ?>
+foreach ($modules as $module) {
+    require_once get_template_directory() . $module;
+}
 
 
-
-<?php get_footer(); ?>
-<?php get_sidebar() ?>
+WP_Setup::init(false);

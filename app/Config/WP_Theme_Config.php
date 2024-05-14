@@ -11,7 +11,7 @@ use App\Widgets\AboutWidget;
  * 
  * Theme config
  */
-class WP_Theme_Config
+final class WP_Theme_Config
 {
     /**
      * wp_setup_theme

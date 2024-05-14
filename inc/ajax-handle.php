@@ -1,13 +1,18 @@
 <?php
 
 function madman_ajax_handle(): void {
+
+    if ( ! is_user_logged_in() ) {
+        // Обрабатывайте неавторизованные запросы здесь
+        wp_send_json_error( 'Ошибка аутентификации.' );
+    }
     
     if(!wp_verify_nonce($_REQUEST['nonce'], 'madman-ajax-nonce')) {
       
         wp_die();
     }
 
-    $name = $_REQUEST['name'] ?? '';
+    // $name = $_REQUEST['name'] ?? '';
 
 
     $cars = new WP_Query(array(

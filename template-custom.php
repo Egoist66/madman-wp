@@ -11,6 +11,7 @@ use App\Classes\WP_ShortCodes;
 get_header();
 
 
+
 ?>
 
 <main class="<?= implode(' ', get_post_class('custom-page')); ?>">

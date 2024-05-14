@@ -70,7 +70,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
         
        
         if(is_file($file)){
-            echo "<div><a href='?action=view&file=$files[$i]'>$files[$i]</a></div>";
+            echo "<div><a href='?action=view&file={$files[$i]}'>{$files[$i]}</a></div>";
         }
     }
 
