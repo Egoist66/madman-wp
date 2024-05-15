@@ -42,6 +42,8 @@
 <?php
 
 global $madman_options;
+global $filters;
+global $actions;
 
 
 
@@ -53,3 +55,14 @@ if(is_tax()){
 ?>
 
 <h3>Phone number: <?= $madman_options['phone_number'] ?></h3>
+
+<?php $actions['do_custom_hook_action']('Farid') ?>
+
+<?php 
+
+	$name = 'alex';
+	$name = $filters['apply_custom_hook_filter']($name);
+	echo "<br>";
+	echo $name;
+
+?>

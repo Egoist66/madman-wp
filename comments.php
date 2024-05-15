@@ -55,6 +55,8 @@ if ( post_password_required() ) {
 				array(
 					'style'      => 'ol',
 					'short_ping' => true,
+					'callback'   => 'madman_comment',
+					'avatar_size' => 80,
 					
 				)
 			);

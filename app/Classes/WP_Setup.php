@@ -13,27 +13,16 @@ use App\Classes\WP_ShortCodes;
  */
 class WP_Setup
 {
-
-	/**
-	 * @addons ->
-	 * 
-	 * Implement the Custom Header feature.
-	 */
-
-	/**
-	 * Custom template tags for this theme.
-	 */
-
-	/**
-	 * Functions which enhance the theme by hooking into WordPress.
-	 */
-
 	/**
 	 * Customizer additions.
-	 */
+	*/
 
 	const ADDONS = [
 		'/inc/class-tgm-plugin-activation',
+		'/inc/madman_comment',
+		'/inc/hooks/hooks',
+		'/inc/hooks/filters/filters',
+		'/inc/hooks/actions/actions',
 		'/utils/view',
 		'/utils/dump',
 		'/inc/ajax-handle',
